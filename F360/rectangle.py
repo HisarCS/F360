@@ -22,26 +22,5 @@ class RectangleDrawer:
   
         sketch.sketchCurves.sketchLines.addTwoPointRectangle(self.corner1, self.corner2)
 
-def run(context):
-    ui = None
-    try:
-        app = adsk.core.Application.get()
-        ui = app.userInterface
 
-
-        corner1 = adsk.core.Point3D.create(0, 0, 0)
-        corner2 = adsk.core.Point3D.create(10, 5, 0)
-
-
-        rectangle_drawer = RectangleDrawer(corner1, corner2)
-
-
-        rectangle_drawer.draw_rectangle()
-
-    except:
-        if ui:
-            ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
-
-# Run the script
-run(app.activeDocument)
  
