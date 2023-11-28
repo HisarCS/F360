@@ -7,35 +7,32 @@ These are a set of classes created with the goal of making it easier to work wit
 This section will educate you on the usage of the classes in Fusion 360. Let us begin with the most simple sketch: A SINGULAR LINE
 
 ## The Line Class
+```python 
 
-´
 import adsk.core, adsk.fusion, adsk.cam, traceback
 from time import sleep
 
 def run(context):
     ui = None
     try:
-        app = adsk.core.Application.get()
-        ui = app.userInterface
+        class LineDrawer:
+            def __init__(self, start_point, end_point):
+                self.start_point = start_point
+                self.end_point = end_point
 
-        # Get active design
-        design = app.activeProduct
-        root_comp = design.rootComponent
+                app = adsk.core.Application.get()
+                self.design = app.activeProduct
 
-        # Define start and end points for the line
-        start_point = adsk.core.Point3D.create(0, 0, 0)
-        end_point = adsk.core.Point3D.create(10, 0, 0)
+                self.root_comp = self.design.rootComponent
 
-        # Create an instance of LineDrawer
-        line_drawer = LineDrawer(start_point, end_point)
+            def create_line(self):
 
-        # Create a line using LineDrawer
-        line_drawer.create_line()
+                sketches = self.root_comp.sketches
+                xy_plane = self.root_comp.xYConstructionPlane
+                sketch = sketches.add(xy_plane)
 
-        # Optional: Add a delay to visualize the created line
-        sleep(2)
+                lines = sketch.sketchCurves.sketchLines
 
-    except Exception as e:
-        if ui:
-            ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
-´
+                line = lines.addByTwoPoints(self.start_point, self.end_point)
+
+```
