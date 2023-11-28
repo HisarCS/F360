@@ -9,31 +9,29 @@ This section will educate you on the usage of the classes in Fusion 360. Let us 
 ## The Line Class
 ```python
 
-
-import adsk.core, adsk.fusion, adsk.cam, traceback
-from time import sleep
-
 def run(context):
     ui = None
     try:
-        class LineDrawer:
-            def __init__(self, start_point, end_point):
-                self.start_point = start_point
-                self.end_point = end_point
+        import adsk.core, adsk.fusion, adsk.cam, traceback
+        from time import sleep
+        
+        start_point = adsk.core.Point3D.create(0, 0, 0)
+        end_point = adsk.core.Point3D.create(10, 0, 0)
 
-                app = adsk.core.Application.get()
-                self.design = app.activeProduct
+        # Define the construction plane (e.g., XY plane)
+        construction_plane = self.root_comp.xYConstructionPlane
 
-                self.root_comp = self.design.rootComponent
+        # Create an instance of LineDrawer with construction plane input
+        line_drawer = LineDrawer(start_point, end_point, construction_plane)
 
-            def create_line(self):
+        # Call the create_line method to draw a line
+        line_drawer.create_line()
 
-                sketches = self.root_comp.sketches
-                xy_plane = self.root_comp.xYConstructionPlane
-                sketch = sketches.add(xy_plane)
+    except Exception as e:
+        # Handle exceptions
+        traceback.print_exc()
 
-                lines = sketch.sketchCurves.sketchLines
-
-                line = lines.addByTwoPoints(self.start_point, self.end_point)
 
 ```
+
+To explain the code: def run(context) is the default runnig function of the Fusion 360 API. Then you set your ui as none due to you not having any ui related functions in your code. Then you simply define your start and end point, construction play and create the LineDrawer class instance. After that you call the create_line function and you have a line on any play you want.
