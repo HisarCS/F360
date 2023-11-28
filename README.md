@@ -7,11 +7,8 @@ These are a set of classes created with the goal of making it easier to work wit
 This section will educate you on the usage of the classes in Fusion 360. Let us begin with the most simple sketch: A SINGULAR LINE
 
 ## The Line Class
-```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
-``````python 
+```python
+
 
 import adsk.core, adsk.fusion, adsk.cam, traceback
 from time import sleep
