@@ -65,14 +65,3 @@ class Lofty:
             raise RuntimeError(f'Failed to create loft profiles: {e}')
 
 
-def run(context):
-    ui = None
-    try:
-        app = adsk.core.Application.get()
-        ui = app.userInterface
-
-        lofty_instance = Lofty(app)
-
-    except Exception as e:
-        if ui:
-            ui.messageBox(f'Failed:\n{e}')
