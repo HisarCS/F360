@@ -26,15 +26,3 @@ def run(context):
                 lines = sketch.sketchCurves.sketchLines
 
                 line = lines.addByTwoPoints(self.start_point, self.end_point)
-
-        start_point = adsk.core.Point3D.create(0, 0, 0)
-        end_point = adsk.core.Point3D.create(10, 0, 0)
-
-        line_drawer = LineDrawer(start_point, end_point)
-
-        # Corrected method name
-        line_drawer.create_line()
-
-    except:
-        if ui:
-            ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
