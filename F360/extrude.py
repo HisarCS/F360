@@ -28,33 +28,3 @@ class ExtrudeCreator:
             extrusion_input.operation = adsk.fusion.FeatureOperations.IntersectFeatureOperation
 
         extrusions.add(extrusion_input)
-
-def run(context):
-    ui = None
-    try:
-        app = adsk.core.Application.get()
-        ui = app.userInterface
-
-
-        sketches = app.activeProduct.rootComponent.sketches
-        xy_plane = app.activeProduct.rootComponent.xYConstructionPlane
-        sketch = sketches.add(xy_plane)
-
- 
-        corner1 = adsk.core.Point3D.create(0, 0, 0)
-        corner2 = adsk.core.Point3D.create(10, 5, 0)
-        sketch.sketchCurves.sketchLines.addTwoPointRectangle(corner1, corner2)
-
-        
-        rectangle_profile = sketch.profiles.item(0)  
-        extrude_creator = ExtrudeCreator(rectangle_profile, 5, 'NewBody')#note that newbody is the default extrusion type
-
-     
-        extrude_creator.create_extrusion()
-
-    except:
-        if ui:
-            ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
-
-
-run(app.activeDocument)
