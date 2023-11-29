@@ -24,7 +24,7 @@ line_drawer.create_line()
 
 ```
 
-To explain the code: You simply define your start and end point, construction play and create the LineDrawer class instance. After that you call the create_line function and you have a line on any plane you want. 
+To explain the code: You simply define your start and end point, construction plane and create the LineDrawer class instance. After that you call the create_line function and you have a line on any plane you want. ⎹ 
 
 ### The Circle Class
 
@@ -44,7 +44,7 @@ circle_creator = CircleCreator(adsk.core.Point3D.create(0, 0, 0), 2, xyPlane)
 circle1 = circle_creator.create_circle()
 
 ```
-Here you have to define the application and ui(they aren't defined in the class). Then create a variable and assign the construction plane you want to use to it. After that you just have to define your point and radius and pass them into the function along with the plane the circle will be drawn on.
+Here you have to define the application and ui(they aren't defined in the class). Then create a variable and assign the construction plane you want to use to it. After that you just have to define your point and radius and pass them into the class along with the plane the circle will be drawn on.  ⃝
 
 ### The Rectangle Class
 
@@ -64,4 +64,25 @@ rectangle_drawer = RectangleDrawer(corner1, corner2, xy_plane)
 
 rectangle_drawer.draw_rectangle()
 ```
-Here you have to define the application and ui(they aren't defined in the class). Then you have to define two points as you are drawing a two point rectangle also you define the plane you use then you pass them into the function. After that you just have to call the draw_rectangle function and you have a rectangle.
+Here you have to define the application and ui(they aren't defined in the class). Then you have to define two points as you are drawing a two point rectangle also you define the plane you use then you pass them into the class. After that you just have to call the draw_rectangle function and you have a rectangle.▭
+
+### The Polygon Class
+
+
+```python
+
+app = adsk.core.Application.get()
+ui = app.userInterface
+
+center_point = adsk.core.Point3D.create(0, 0, 0)
+num_sides = 6
+radius = 3
+xy_plane = app.activeProduct.rootComponent.xYConstructionPlane
+
+polygon_drawer = PolygonDrawer(center_point, num_sides, radius, xy_plane)
+polygon_drawer.draw_polygon()
+```
+ere you have to define the application and ui(they aren't defined in the class). Then you have to define your side number, radius, plane and center point. After that you pass these into the class and then class the draw_polygon function and you have a polygon. ⬠
+
+
+
