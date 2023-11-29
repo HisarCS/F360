@@ -85,8 +85,31 @@ xy_plane = app.activeProduct.rootComponent.xYConstructionPlane
 polygon_drawer = PolygonDrawer(center_point, num_sides, radius, xy_plane)
 polygon_drawer.draw_polygon()
 ```
-ere you have to define the application and ui(they aren't defined in the class). Then you have to define your side number, radius, plane and center point. After that you pass these into the class and then class the draw_polygon function and you have a polygon. ⬠
+Here you have to define the application and ui(they aren't defined in the class). Then you have to define your side number, radius, plane and center point. After that you pass these into the class and then class the draw_polygon function and you have a polygon. ⬠
 <img width="487" alt="Ekran Resmi 2023-11-29 18 07 55" src="https://github.com/HisarCS/F360/assets/120194760/20b24308-7bbd-47fe-8e5e-5052183f97c8">
 
+### Three Point Arc
 
+```python
 
+app = adsk.core.Application.get()
+ui = app.userInterface
+
+design = app.activeProduct
+root_comp = design.rootComponent
+
+xy_plane = root_comp.xYConstructionPlane
+
+arc_creator = ThreePointArcCreator(xy_plane)
+
+point1 = adsk.core.Point3D.create(0, 0, 0)
+point2 = adsk.core.Point3D.create(10, 0, 0)
+point3 = adsk.core.Point3D.create(10, 10, 0)
+
+arc_creator.create_arc(point1, point2, point3)
+
+```
+
+Here you call/define app and ui also you get the design and root_comp after that you define the xy plane you then create an instance of the class and pass in the plane after that you call the create_arc function and pass in the points. After you've completed these steps you have a three point arc. ⌒
+
+<img width="820" alt="Ekran Resmi 2023-11-30 00 37 06" src="https://github.com/HisarCS/F360/assets/120194760/61a8a6b3-502a-4a75-a046-1ded8636ce46">
