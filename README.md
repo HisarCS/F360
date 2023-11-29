@@ -25,6 +25,7 @@ line_drawer.create_line()
 ```
 
 To explain the code: You simply define your start and end point, construction plane and create the LineDrawer class instance. After that you call the create_line function and you have a line on any plane you want. ⎹ 
+<img width="628" alt="Ekran Resmi 2023-11-29 18 06 24" src="https://github.com/HisarCS/F360/assets/120194760/78cdb822-9620-487b-8af4-fa7ba08dfc44">
 
 ### The Circle Class
 
@@ -45,6 +46,7 @@ circle1 = circle_creator.create_circle()
 
 ```
 Here you have to define the application and ui(they aren't defined in the class). Then create a variable and assign the construction plane you want to use to it. After that you just have to define your point and radius and pass them into the class along with the plane the circle will be drawn on.  ⃝
+<img width="485" alt="Ekran Resmi 2023-11-29 18 06 59" src="https://github.com/HisarCS/F360/assets/120194760/d0f68bcf-a3e2-40e2-94e5-16ffe1ba2e6e">
 
 ### The Rectangle Class
 
@@ -65,6 +67,7 @@ rectangle_drawer = RectangleDrawer(corner1, corner2, xy_plane)
 rectangle_drawer.draw_rectangle()
 ```
 Here you have to define the application and ui(they aren't defined in the class). Then you have to define two points as you are drawing a two point rectangle also you define the plane you use then you pass them into the class. After that you just have to call the draw_rectangle function and you have a rectangle.▭
+<img width="483" alt="Ekran Resmi 2023-11-29 18 07 22" src="https://github.com/HisarCS/F360/assets/120194760/7110dab2-7a78-4443-89cf-466fb6fc8cc5">
 
 ### The Polygon Class
 
@@ -83,6 +86,7 @@ polygon_drawer = PolygonDrawer(center_point, num_sides, radius, xy_plane)
 polygon_drawer.draw_polygon()
 ```
 ere you have to define the application and ui(they aren't defined in the class). Then you have to define your side number, radius, plane and center point. After that you pass these into the class and then class the draw_polygon function and you have a polygon. ⬠
+<img width="487" alt="Ekran Resmi 2023-11-29 18 07 55" src="https://github.com/HisarCS/F360/assets/120194760/20b24308-7bbd-47fe-8e5e-5052183f97c8">
 
 
 
