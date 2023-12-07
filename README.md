@@ -210,3 +210,5 @@ Create an instance of the FilletManager class. Apply a constant radius fillet to
 * choose chord length
 
 * apply this via create_chord_length fillet
+
+###### Note: Note that you have to have and extruded shape. Also note that these fillets can be used seperately
