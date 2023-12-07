@@ -113,3 +113,66 @@ arc_creator.create_arc(point1, point2, point3)
 Here you call/define app and ui also you get the design and root_comp after that you define the xy plane you then create an instance of the class and pass in the plane after that you call the create_arc function and pass in the points. After you've completed these steps you have a three point arc. ⌒
 
 <img width="820" alt="Ekran Resmi 2023-11-30 00 37 06" src="https://github.com/HisarCS/F360/assets/120194760/61a8a6b3-502a-4a75-a046-1ded8636ce46">
+
+## Features
+
+### Extrude 
+
+```python
+
+app = adsk.core.Application.get()
+ui = app.userInterface
+
+
+sketches = app.activeProduct.rootComponent.sketches
+xy_plane = app.activeProduct.rootComponent.xYConstructionPlane
+sketch = sketches.add(xy_plane)
+
+ 
+corner1 = adsk.core.Point3D.create(0, 0, 0)
+corner2 = adsk.core.Point3D.create(10, 5, 0)
+sketch.sketchCurves.sketchLines.addTwoPointRectangle(corner1, corner2)
+
+        
+rectangle_profile = sketch.profiles.item(0)  
+extrude_creator = ExtrudeCreator(rectangle_profile, 5, 'NewBody')
+
+     
+extrude_creator.create_extrusion()
+
+```
+Firstly here you create a simple shape(here a rectangle). Then you put your profile the extrusion height and type into the class. After that you just called the creat extrusion function and now you have a 3D body.
+
+<img width="772" alt="Ekran Resmi 2023-12-07 07 24 55" src="https://github.com/HisarCS/F360/assets/120194760/4ada3ae5-abc4-4df5-8d3d-0ffb5e5de9de">
+
+### Fillet
+
+```python
+
+fillet_manager = FilletManager()
+
+
+edges1 = fillet_manager.rootComp.bRepBodies.item(0).faces.item(0).edges
+edge_collection1 = adsk.core.ObjectCollection.create()
+for edge in edges1:
+       edge_collection1.add(edge)
+radius1 = adsk.core.ValueInput.createByReal(0.3)
+fillet_manager.create_constant_radius_fillet(edge_collection1, radius1)
+
+        
+edge2 = fillet_manager.rootComp.bRepBodies.item(0).faces.item(0).edges.item(0)
+start_radius2 = adsk.core.ValueInput.createByReal(1.0)
+end_radius2 = adsk.core.ValueInput.createByReal(5.0)
+positions2 = [adsk.core.ValueInput.createByReal(0.3), adsk.core.ValueInput.createByReal(0.6)]
+radii2 = [adsk.core.ValueInput.createByReal(2.0), adsk.core.ValueInput.createByReal(3.0)]
+fillet_manager.create_variable_radius_fillet(edge2, start_radius2, end_radius2, radii2, positions2)
+
+
+edges3 = fillet_manager.rootComp.bRepBodies.item(0).faces.item(0).edges
+edge_collection3 = adsk.core.ObjectCollection.create()
+for edge in edges3:
+       edge_collection3.add(edge)
+chord_length3 = adsk.core.ValueInput.createByReal(1.0)
+fillet_manager.create_chord_length_fillet(edge_collection3, chord_length3
+
+```
