@@ -46,6 +46,7 @@ circle1 = circle_creator.create_circle()
 
 ```
 Here you have to define the application and ui(they aren't defined in the class). Then create a variable and assign the construction plane you want to use to it. After that you just have to define your point and radius and pass them into the class along with the plane the circle will be drawn on.  ⃝
+
 <img width="485" alt="Ekran Resmi 2023-11-29 18 06 59" src="https://github.com/HisarCS/F360/assets/120194760/d0f68bcf-a3e2-40e2-94e5-16ffe1ba2e6e">
 
 ### The Rectangle Class
