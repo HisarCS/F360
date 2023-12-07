@@ -86,6 +86,7 @@ polygon_drawer = PolygonDrawer(center_point, num_sides, radius, xy_plane)
 polygon_drawer.draw_polygon()
 ```
 Here you have to define the application and ui(they aren't defined in the class). Then you have to define your side number, radius, plane and center point. After that you pass these into the class and then class the draw_polygon function and you have a polygon. ⬠
+
 <img width="487" alt="Ekran Resmi 2023-11-29 18 07 55" src="https://github.com/HisarCS/F360/assets/120194760/20b24308-7bbd-47fe-8e5e-5052183f97c8">
 
 ### Three Point Arc
