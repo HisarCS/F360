@@ -67,6 +67,7 @@ rectangle_drawer = RectangleDrawer(corner1, corner2, xy_plane)
 rectangle_drawer.draw_rectangle()
 ```
 Here you have to define the application and ui(they aren't defined in the class). Then you have to define two points as you are drawing a two point rectangle also you define the plane you use then you pass them into the class. After that you just have to call the draw_rectangle function and you have a rectangle.▭
+
 <img width="483" alt="Ekran Resmi 2023-11-29 18 07 22" src="https://github.com/HisarCS/F360/assets/120194760/7110dab2-7a78-4443-89cf-466fb6fc8cc5">
 
 ### The Polygon Class
