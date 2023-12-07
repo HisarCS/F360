@@ -176,6 +176,37 @@ edge_collection3 = adsk.core.ObjectCollection.create()
 for edge in edges3:
        edge_collection3.add(edge)
 chord_length3 = adsk.core.ValueInput.createByReal(1.0)
-fillet_manager.create_chord_length_fillet(edge_collection3, chord_length3
+fillet_manager.create_chord_length_fillet(edge_collection3, chord_length3)
 
 ```
+
+Constant Radius Fillet: This fillet has a uniform radius applied to all selected edges.
+Variable Radius Fillet: This fillet has varying radii at specified positions along a selected edge.
+Chord Length Fillet: This fillet uses a specified chord length to determine the fillet size on the selected edge
+
+Create an instance of the FilletManager class. Apply a constant radius fillet to the specified edges.Apply a variable radius fillet to a specific edge with specified start and end radii, positions, and radii values. Apply a chord length fillet to the specified edges with the given chord length. 
+
+#### Constant Radius Fillet
+
+* choose all the edges in our chosen profile's chosen face
+
+* determine a radius for the fillet
+
+* apply this on the edges via the create_constant_radius_fillet
+
+#### Variable Radius Fillet
+
+
+* choose start and end radius
+
+* choose transition positions and the transition radii
+
+* apply this on the edges via the create_variable_radius_fillet
+
+#### Chord Length Fillet
+
+* choose all the edges in our chosen profile's chosen face
+
+* choose chord length
+
+* apply this via create_chord_length fillet
