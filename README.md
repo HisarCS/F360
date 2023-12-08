@@ -214,3 +214,7 @@ Create an instance of the FilletManager class. Apply a constant radius fillet to
 ###### Note: Note that you have to have and extruded shape. Also note that these fillets can be used seperately
 
 <img width="664" alt="Ekran Resmi 2023-12-07 22 38 22" src="https://github.com/HisarCS/F360/assets/120194760/81ffecb9-b018-44af-8c39-3b2454b30807">
+
+
+### Loft
+
