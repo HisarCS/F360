@@ -150,71 +150,11 @@ Firstly here you create a simple shape(here a rectangle). Then you put your prof
 
 ### Fillet
 
-```python
-
-fillet_manager = FilletManager()
-
-
-edges1 = fillet_manager.rootComp.bRepBodies.item(0).faces.item(0).edges
-edge_collection1 = adsk.core.ObjectCollection.create()
-for edge in edges1:
-       edge_collection1.add(edge)
-radius1 = adsk.core.ValueInput.createByReal(0.3)
-fillet_manager.create_constant_radius_fillet(edge_collection1, radius1)
-
-        
-edge2 = fillet_manager.rootComp.bRepBodies.item(0).faces.item(0).edges.item(0)
-start_radius2 = adsk.core.ValueInput.createByReal(1.0)
-end_radius2 = adsk.core.ValueInput.createByReal(5.0)
-positions2 = [adsk.core.ValueInput.createByReal(0.3), adsk.core.ValueInput.createByReal(0.6)]
-radii2 = [adsk.core.ValueInput.createByReal(2.0), adsk.core.ValueInput.createByReal(3.0)]
-fillet_manager.create_variable_radius_fillet(edge2, start_radius2, end_radius2, radii2, positions2)
-
-
-edges3 = fillet_manager.rootComp.bRepBodies.item(0).faces.item(0).edges
-edge_collection3 = adsk.core.ObjectCollection.create()
-for edge in edges3:
-       edge_collection3.add(edge)
-chord_length3 = adsk.core.ValueInput.createByReal(1.0)
-fillet_manager.create_chord_length_fillet(edge_collection3, chord_length3)
-
-```
-
-Constant Radius Fillet: This fillet has a uniform radius applied to all selected edges.
-Variable Radius Fillet: This fillet has varying radii at specified positions along a selected edge.
-Chord Length Fillet: This fillet uses a specified chord length to determine the fillet size on the selected edge
-
-Create an instance of the FilletManager class. Apply a constant radius fillet to the specified edges.Apply a variable radius fillet to a specific edge with specified start and end radii, positions, and radii values. Apply a chord length fillet to the specified edges with the given chord length. 
-
 #### Constant Radius Fillet
-
-* choose all the edges in our chosen profile's chosen face
-
-* determine a radius for the fillet
-
-* apply this on the edges via the create_constant_radius_fillet
 
 #### Variable Radius Fillet
 
-
-* choose start and end radius
-
-* choose transition positions and the transition radii
-
-* apply this on the edges via the create_variable_radius_fillet
-
 #### Chord Length Fillet
-
-* choose all the edges in our chosen profile's chosen face
-
-* choose chord length
-
-* apply this via create_chord_length fillet
-
-###### Note: Note that you have to have and extruded shape. Also note that these fillets can be used seperately
-
-<img width="664" alt="Ekran Resmi 2023-12-07 22 38 22" src="https://github.com/HisarCS/F360/assets/120194760/81ffecb9-b018-44af-8c39-3b2454b30807">
-
 
 ### Loft
 
