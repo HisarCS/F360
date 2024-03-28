@@ -283,4 +283,26 @@ def run(context):
 <img width="800" alt="Ekran Resmi 2024-03-28 16 02 41" src="https://github.com/HisarCS/F360/assets/120194760/85a38b2e-cd5c-4e33-89fb-b56f261c56af">
 
 
+### Offset 
+
+```python
+
+def run(context):
+    try:
+        app = adsk.core.Application.get()
+        offset_creator = OffsetCreator(app)
+        xyPlane = offset_creator.rootComp.xYConstructionPlane
+        sketch = offset_creator.rootComp.sketches.add(xyPlane)
+        circle = sketch.sketchCurves.sketchCircles.addByCenterRadius(adsk.core.Point3D.create(0, 0, 0), 5)
+        offset_distance = 1.0
+        direction_point = (0, 0, 0)  # Use the center of the circle as the direction point
+        offset_creator.create_offset(sketch, [circle], offset_distance, direction_point)
+    except:
+        if offset_creator.ui:
+            offset_creator.ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
+
+
+```
+
+
 
