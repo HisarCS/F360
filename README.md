@@ -204,3 +204,4 @@ def run(context):
 
 ```
 
+<img width="1005" alt="Ekran Resmi 2024-03-28 14 46 19" src="https://github.com/HisarCS/F360/assets/120194760/1b68f405-e126-4022-81f6-fcec6dfe9a3b">
