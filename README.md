@@ -117,6 +117,48 @@ Here you call/define app and ui also you get the design and root_comp after that
 
 <img width="820" alt="Ekran Resmi 2023-11-30 00 37 06" src="https://github.com/HisarCS/F360/assets/120194760/61a8a6b3-502a-4a75-a046-1ded8636ce46">
 
+
+## The ELlipse Class
+
+```python
+import adsk.core, adsk.fusion, adsk.cam, traceback
+
+class EllipseDrawer:
+    def __init__(self, app):
+        self.app = app
+        self.ui = app.userInterface
+        self.design = app.activeProduct
+        self.rootComp = self.design.rootComponent
+
+    def draw_ellipse(self, plane_name, center_x, center_y, major_axis_length, minor_axis_length):
+        if plane_name.lower() == 'xy':
+            plane = self.rootComp.xYConstructionPlane
+        elif plane_name.lower() == 'xz':
+            plane = self.rootComp.xZConstructionPlane
+        elif plane_name.lower() == 'yz':
+            plane = self.rootComp.yZConstructionPlane
+        else:
+            self.ui.messageBox(f"Plane {plane_name} not recognized. Please use 'XY', 'XZ', or 'YZ'.")
+            return
+        
+        sketches = self.rootComp.sketches
+        sketch = sketches.add(plane)
+        center = adsk.core.Point3D.create(center_x, center_y, 0)
+        major_axis_point = adsk.core.Point3D.create(center_x + major_axis_length / 2, center_y, 0)
+        
+        # Calculate a point on the minor axis
+        if plane_name.lower() == 'xy' or plane_name.lower() == 'xz':
+            minor_axis_point = adsk.core.Point3D.create(center_x, center_y + minor_axis_length / 2, 0)
+        else: # 'YZ' plane
+            minor_axis_point = adsk.core.Point3D.create(0, center_y + minor_axis_length / 2, center_x)
+        
+        sketch.sketchCurves.sketchEllipses.add(center, major_axis_point, minor_axis_point)
+        self.ui.messageBox(f'Ellipse drawn successfully on the {plane_name} plane!')
+
+
+
+```
+
 ## Features
 
 ### Extrude 
@@ -205,3 +247,5 @@ def run(context):
 ```
 
 <img width="1005" alt="Ekran Resmi 2024-03-28 14 46 19" src="https://github.com/HisarCS/F360/assets/120194760/1b68f405-e126-4022-81f6-fcec6dfe9a3b">
+
+
