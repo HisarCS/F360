@@ -249,3 +249,38 @@ def run(context):
 <img width="1005" alt="Ekran Resmi 2024-03-28 14 46 19" src="https://github.com/HisarCS/F360/assets/120194760/1b68f405-e126-4022-81f6-fcec6dfe9a3b">
 
 
+
+### Chamfer
+
+
+```python
+def run(context):
+    try:
+        app = adsk.core.Application.get()
+        chamfer_creator = ChamferCreator(app)
+        
+        # Find the first solid body in the root component to demonstrate chamfering its edges
+        rootComp = chamfer_creator.design.rootComponent
+        bodies = rootComp.bRepBodies
+        if bodies.count > 0:
+            body = bodies.item(0)
+            edges = body.edges
+            if edges.count >= 2:
+                # Attempt to chamfer the first two edges of the body
+                chamfer_edges = [edges.item(0), edges.item(1)]
+                chamfer_distance = 0.5  # Specify the chamfer distance
+                chamfer_creator.create_chamfer(chamfer_edges, chamfer_distance)
+            else:
+                chamfer_creator.ui.messageBox('Not enough edges to create a chamfer.')
+        else:
+            chamfer_creator.ui.messageBox('No solid bodies found in the root component.')
+        
+    except:
+        if chamfer_creator.ui:
+            chamfer_creator.ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
+
+```
+<img width="800" alt="Ekran Resmi 2024-03-28 16 02 41" src="https://github.com/HisarCS/F360/assets/120194760/85a38b2e-cd5c-4e33-89fb-b56f261c56af">
+
+
+
