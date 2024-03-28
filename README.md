@@ -158,3 +158,49 @@ Firstly here you create a simple shape(here a rectangle). Then you put your prof
 
 ### Loft
 
+```python
+def run(context):
+    try:
+        app = adsk.core.Application.get()
+        lofter = Lofter(app)
+
+        def sketch_square1(sketch):
+            lines = sketch.sketchCurves.sketchLines
+            p1 = adsk.core.Point3D.create(-2.5, 2.5, 0)
+            p2 = adsk.core.Point3D.create(2.5, 2.5, 0)
+            p3 = adsk.core.Point3D.create(2.5, -2.5, 0)
+            p4 = adsk.core.Point3D.create(-2.5, -2.5, 0)
+            lines.addByTwoPoints(p1, p2)
+            lines.addByTwoPoints(p2, p3)
+            lines.addByTwoPoints(p3, p4)
+            lines.addByTwoPoints(p4, p1)
+
+        xyPlane = lofter.rootComp.xYConstructionPlane
+        lofter.add_profile(xyPlane, sketch_square1)
+
+        def sketch_square2(sketch):
+            lines = sketch.sketchCurves.sketchLines
+            p1 = adsk.core.Point3D.create(-1.5, 1.5, 0)
+            p2 = adsk.core.Point3D.create(1.5, 1.5, 0)
+            p3 = adsk.core.Point3D.create(1.5, -1.5, 0)
+            p4 = adsk.core.Point3D.create(-1.5, -1.5, 0)
+            lines.addByTwoPoints(p1, p2)
+            lines.addByTwoPoints(p2, p3)
+            lines.addByTwoPoints(p3, p4)
+            lines.addByTwoPoints(p4, p1)
+
+        offsetPlaneInput = lofter.rootComp.constructionPlanes.createInput()
+        offsetDistance = adsk.core.ValueInput.createByReal(10.0)
+        offsetPlaneInput.setByOffset(xyPlane, offsetDistance)
+        offsetPlane = lofter.rootComp.constructionPlanes.add(offsetPlaneInput)
+        lofter.add_profile(offsetPlane, sketch_square2)
+
+        lofter.create_loft()
+
+    except:
+        if lofter.ui:
+            lofter.ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
+
+
+```
+
